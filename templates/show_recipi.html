@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block start %}
+<h1 align='center'>Recipies</h1>
+<hr>
+<div class="container mt-5">
+    <form method="GET">
+    <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Receipe name</label>
+    <input name="search" required type="text" class="form-control" >
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
+<table>
+    <tr>
+    <th>Sr.No</th>
+    <th>recipi_name</th>
+    <th>recipi_desc</th>
+    <th>recipi_img</th>
+    <th>Action</th>
+    <!--<th>Can Vote</th>-->
+    </tr>
+    {% for dat in data %}
+    <tr>
+    <td>{{forloop.counter}}</td>
+    <td>{{dat.recipi_name}}</td>
+    <td>{{dat.recipi_desc}}</td>
+    <td>{{dat.recipi_img}}</td>
+    <td>
+        <button><a href="https://venkyalane.pythonanywhere.com/delete/{{dat.id}}/">Delete Recipe</a></button>
+        <button><a href="https://venkyalane.pythonanywhere.com/update/{{dat.id}}/">Update Recipe</a></button>
+    </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

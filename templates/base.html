@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{page}}</title>
+    <style>
+      .block-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .block-button:hover {
+            background-color: #45a049; /* Darker green */
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f2f2f2;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-container input[type="text"],
+        .form-container input[type="email"],
+        .form-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .form-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .form-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        nav {
+            text-align: center;
+            margin: 1em 0;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #4CAF50;
+        }
+        footer {
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+            max-width: 300px;
+            text-align: center;
+        }
+        input {
+            padding: 8px;
+            margin: 10px 0;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        /*button {*/
+        /*    padding: 10px;*/
+        /*    background-color: #4CAF50;*/
+        /*    color: white;*/
+        /*    border: none;*/
+        /*    border-radius: 4px;*/
+        /*    cursor: pointer;*/
+        /*    width: 100%;*/
+        /*}*/
+        button:hover {
+            background-color: #45a049;
+        }
+        p {
+            margin-top: 20px;
+        }
+        .flex-container {
+            display: flex;
+            background-color: DodgerBlue;
+        }
+        .flex-container > div {
+          background-color: #f1f1f1;
+          margin: 10px;
+          padding: 20px;
+          font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--{% if request.user.is_authenticated %}-->
+    <!--<header>-->
+    <!--    <h1 align="center"><b>Welcome Back {{request.user.username}}</b></h1>-->
+    <!--    {% else %}-->
+    <!--    <h1 align="center"><b>Welcome On My Site</b></h1>-->
+    <!--    {% endif %}-->
+    <!--</header>-->
+    <nav>
+        <a href = ''>Home</a>
+        <a href = '/student'>Students</a>
+        <a href = '/people-home'>Peoples</a>
+        <a href = '/recipies_home'>Recipies</a>
+        <a href = '/about-us'>AboutUs</a>
+        <a href = '/contact'>Contact</a>
+        <a href = '/age-calculate'>Age Calculator</a>
+        <a href = '/javascript-practice'>JavaScript Practice</a>
+        <a href = '/register'>Register</a>
+        {% if request.user.is_authenticated %}
+        <button><a href = '/logout'>Logout</a></button>
+        {% else %}
+        <button><a href = '/login'>Login</a></button>
+        {% endif %}
+        <button onclick="window.print()">Print</button>
+    </nav>
+    {% block start %}
+
+
+    {% endblock %}
+</body>
+<!--<footer>-->
+<!--    <p>&copy; 2024 My Website. All rights reserved.</p>-->
+<!--</footer>-->
+
+</html>

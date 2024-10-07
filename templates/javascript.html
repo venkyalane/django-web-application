@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load static %}
+{% block start %}
+<hr>
+<h1 align="center"><b>Hello Welcome To JS</b></h1>
+<h3>Paragraph change using JavaScript</h3>
+<div align="center">
+    <p id="1">A Paragraph</p>
+    <button type="button" onclick="myFunction()">Try it</button>
+</div>
+<hr>
+<p id="2"></p>
+<hr>
+<h3>Show hidden HTML Click on Click Me button using JavaScript</h3>
+<div align="center">
+    <p id="3"></p>
+    <p id="4"></p>
+    <button type="button" onclick="myFunction1()">Click Me!</button>
+</div>
+<hr>
+<p id="5"></p>
+<p id="6"></p>
+<hr>
+<div align="center">
+    <p id="7"></p>
+    <p id="8"></p>
+</div>
+<hr>
+<h3>Light On Off using JavaScript</h3>
+<div align="center">
+    <button onclick="document.getElementById('myImage').src='{% static 'bulb_on.png' %}'">Turn on the light</button>
+    <img id="myImage" src="{% static 'bulb_off.png' %}" style="width:100px">
+    <button onclick="document.getElementById('myImage').src='{% static 'bulb_off.png' %}'">Turn off the light</button>
+</div>
+<!--<button onclick="window.print()">Print this page</button>-->
+<script>
+    // let age = parseInt(prompt("Enter Age"));
+
+    // if (age<18){
+    //     console.log("minor");
+    // }
+    // else if (age>=18 && age<=60){
+    //     console.log("adult");
+    // }
+    // else {
+    //     console.log("senior citizen");
+    // }
+    function myFunction() {
+        document.getElementById("1").innerHTML = "Paragraph changed.";
+    }
+
+    let x, y, z;  // Statement 1
+    x = 5;        // Statement 2
+    y = 6;        // Statement 3
+    z = x + y;    // Statement 4
+
+    document.getElementById("2").innerHTML ="The value of z is " + z + ".";
+    function myFunction1() {
+        let name = prompt("Enter Your Name");
+        document.getElementById("3").innerHTML = "Hello "+name;
+        document.getElementById("4").innerHTML = "How are you?";
+    }
+
+    try {
+      carName = "Saab";
+      let carName = "Volvo";
+    }
+    catch(err) {
+      document.getElementById("5").innerHTML = err;
+    }
+
+    try {
+      const PI = 3.141592653589793;
+      PI = 3.14;
+    }
+    catch (err) {
+      document.getElementById("6").innerHTML = err;
+    }
+
+    let text = "Outside: " + typeof carName;
+    document.getElementById("7").innerHTML = text;
+
+    function myFunction2() {
+      let carName = "Volvo";
+      let text = "Inside: " + typeof carName + " " + carName;
+      document.getElementById("8").innerHTML = text;
+    }
+    myFunction2();
+    const myObj = {
+      name: "John",
+      age: 30,
+      myCars: {
+        car1: "Ford",
+        car2: "BMW",
+        car3: "Fiat"
+      }
+    }
+console.log(myObj);
+</script>
+{% endblock %}

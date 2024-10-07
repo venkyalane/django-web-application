@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block start %}
+
+<h1 align='center'>Student Data</h1>
+<hr>
+<!--Table code-->
+<table>
+    <tr>
+    <th>#</th>
+    <th>Student ID</th>
+    <th>Student Name</th>
+    <th>Email</th>
+    <th>Age</th>
+    <th>Department</th>
+    <th>Address</th>
+    </tr>
+    {% for dat in data %}
+    <tr>
+    <td>{{forloop.counter}}</td>
+    <td>{{dat.student_id}}</td>
+    <td>{{dat.student_name}}</a></td>
+    <td>{{dat.student_email}}</td>
+    <td>{{dat.student_age}}</td>
+    <td>{{dat.department}}</td>
+    <td>{{dat.student_address}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<!--Pagination code-->
+<div class="pagination">
+    <span class="step-links">
+        {% if data.has_previous %}
+        <a href="?page=1">&laquo; first</a>
+        <a href="?page={{ data.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ data.number }} of {{ data.paginator.num_pages }}.
+        </span>
+
+        {% if data.has_next %}
+            <a href="?page={{ data.next_page_number }}">next</a>
+            <a href="?page={{ data.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}

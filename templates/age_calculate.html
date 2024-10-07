@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block start %}
+<div class="container" align="center">
+    <h2>Age Calculator</h2>
+    <label for="dob">Enter your Date of Birth:</label>
+    <input type="date" id="dob" name="dob">
+    <button onclick="calculateAge()">Calculate Age</button>
+    <p id="result"></p>
+</div>
+
+<script>
+    function calculateAge() {
+        let dob = document.getElementById('dob').value;
+        if (dob) {
+            let birthDate = new Date(dob);
+            let today = new Date();
+            let age = today.getFullYear() - birthDate.getFullYear();
+            let monthDifference = today.getMonth() - birthDate.getMonth();
+
+            if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+
+            document.getElementById('result').innerText = `You are ${age} years old.`;
+        } else {
+            document.getElementById('result').innerText = "Please enter your date of birth.";
+        }
+    }
+</script>
+{% endblock %}

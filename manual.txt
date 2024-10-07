@@ -1,0 +1,138 @@
+# In CMD 
+>> django-admin startproject myproject1
+
+# check server runnig or not
+>> python manage.py runserver
+
+# create your first app
+>> python manage.py startapp app_name
+
+# register your app_name in installed apps in setting.py file
+
+# create model in models.py file or make changes in models.py
+Ex. class model_name(models.Model):
+            name =models.CharField(max_length=)
+            age = models.IntegerField()
+
+# after creating model or changes in existing model in models.py file make migrations using following commands
+>> python manage.py makemigrations [app_name]
+
+# after makemigrations hit the migrate command
+>> python manage.py migrate
+
+# django shell
+>> python manage.py shell   ---> shell inisialise
+from appname.models import *      --->import all models from models.py file 
+# create object
+obj = modelname(arguments)
+obj.save()          
+## OR ##
+obj = modelname.objects.create(arguments)
+
+# we can execute perticular function from any file in django shell
+>> from function_file_derectory.filename import functionname
+>> functionname()
+
+# CRUD operations(Create, Read, Update, Delete)
+# Create:
+    Method-1:    
+            obj = modelname(arguments)
+            obj.save()
+    
+    Method-2:    model_name.objects(arguments)
+    
+    Method-3:    dict = {'key':'value'}
+                 model_name.objects(dict)
+
+# Read:
+    # Fetch all data
+    model_name.objects.all()
+    
+    # perticular data Fetch
+    model_name.objects.get(attribute)           If attribute is invalid then it will throw Error
+    model_name.objects.filter(attribute)        If attribute is invalid then handel error nad it return empty set
+
+# Update:
+    Method-1:
+            obj = modelname.objects.get(attribute='value')
+            obj.attribute = 'value'
+            obj.save()
+
+    Method-2:
+            modelname.objects.filter(attribute).update(attribute='value')
+
+# Delete:
+    # delete perticular record
+    modelname.objects.get(attribute='value').delete()
+
+    # delete all records
+    modelname.objects.all().delete()
+    
+# Advanced Queries About Django :
+>> python manage.py shell
+>> from appname.models import *
+
+# fetch all data
+>> qryset = model_name.objects.all()
+>> qryset
+
+# fetch perticular records [start: Stop]
+>> qryset[0:100]
+
+# Count all record
+>> qryset.count()
+
+# fetch id or pk
+>> qryset[index_number].id    OR qryset[index_number].pk
+
+# fetch perticular one record 
+>> qryset.filetr(fild_name=" ")
+
+# fetch perticular one record based on field and using __icontains keyword
+>> qryset.filetr(fild_name__icontains=" ")[0]
+
+# fetch perticular one record based ForeignKey
+>> qryset.filetr(fild_name__fild_name=" ")
+
+# fetch those record who have different facalties based on ForeignKey
+ex:[mechanical, electrical, etc]
+>> qryset.filetr(fild_name__fild_name__in=["mechanical", "electrical", etc])
+
+# fetch those record who have different facalties based on ForeignKey exclude perticular one facalty
+>> qryset.exclude(fild_name__fild_name="mechanical")
+
+# check record prasent in our qryset
+>> qryset.exists()    True = data exists and False = Not exists
+
+# Show data in dict formate
+>> qryset.values()
+>> qryset[0:10].values()
+>> qryset[0:10].values()[0]
+
+# Show data in reverse formate
+>> qryset.reverse()
+
+# Show preticular columns data
+>> qryset.values_list('field_name','field_name')
+
+
+# Aggregation and Annotation:
+>> from django.db.models import *
+>> from app_name.models import *
+
+>> qryset.aggregate(Avg("column_name"))
+>> qryset.aggregate(Max("column_name"))
+>> qryset.aggregate(Min("column_name"))
+>> qryset.aggregate(Sum("column_name"))
+>> qryset.aggregate(Mul("column_name"))
+
+# count those student who have age in (20, 30)
+>>qryset.values("student_age").annotate(Count("student_age"))
+
+
+
+
+
+
+
+

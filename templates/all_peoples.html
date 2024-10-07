@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block start %}
+
+<h1 align='center'>All Peoples</h1>
+<hr>
+<!--Table code-->
+<table>
+    <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Address</th>
+    </tr>
+    {% for people in peoples %}
+    <tr>
+    <td>{{forloop.counter}}</td>
+    <td>{{people.name}}</a></td>
+    <td>{{people.age}}</td>
+    <td>{{people.address}}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
